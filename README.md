@@ -1,6 +1,6 @@
 # WaterCubes - PI3D miniproject
 
-![Visuals]()
+![Visuals](https://github.com/Vanillariis/WaterCubes/blob/main/Piv%20recording.gif)
 
 ## Overview of the Game
 
