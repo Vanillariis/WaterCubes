@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Wall
+  - Enemy1
+  - Points
+  - Level
   layers:
   - Default
   - TransparentFX
