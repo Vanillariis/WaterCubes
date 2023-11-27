@@ -1,5 +1,7 @@
 # WaterCubes - PI3D miniproject
 
+![Visuals]()
+
 ## Overview of the Game
 
 This project is a 3D game inspired by various 2D games, where a fish needs to eat smaller fish in order to grow while trying not to get eaten by the bigger fish. It is a third-person controller game where the user is  able to control a cube (player cube) through keyboard and mouse inputs, in a closed arena representing the sea. The goal of the game is to collect/eat enemy cubes that are equal or smaller in size. When the player cube has eaten a certain amount of enemy cubes it levels up and grows and is thereby able to eat even bigger enemy cubes than before. There are five levels in total. The game progressively gets harder as the enemy cubes do not disappear unless they get eaten, so if the player is not fast enough to eat the available enemy cubes and level up in time, there will inevitably become more and more enemies. 
