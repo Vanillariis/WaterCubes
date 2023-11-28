@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     
     public int sizeAndPointAmount;
     
-    // Speed at which the enemy moves
     private float swimSpeed = 2f;
 
     private Vector3 initVelocity;
@@ -21,7 +20,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Get the Player script from the player cube
+        //get the Player script from the player cube
         playerScript = GameObject.Find("Player").GetComponent<PlayerScript>();
         
         GameObject player = GameObject.Find("Player");
@@ -45,13 +44,13 @@ public class Enemy : MonoBehaviour
         transform.Translate(initVelocity * Time.deltaTime);
     }
     
-    // Called when the player cube collides with this cube
+    //called when the player cube collides with this cube
     private void OnCollisionEnter (Collision collision)
     {
-        // Check if the colliding object is the player cube
+        //check if the colliding object is the player cube
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Check if the Player cube is bigger or equal in size
+            //check if the Player cube is bigger or equal in size
             if (playerScript.playerSize >= sizeAndPointAmount)
             {
                 //destroy the enemy
@@ -70,6 +69,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        //enemy changes direction if it collides with a wall
         if (collision.gameObject.CompareTag("Wall"))
         {
             initVelocity = -initVelocity;
@@ -78,20 +78,27 @@ public class Enemy : MonoBehaviour
 
     private void chasePlayer()
     {
+        //if the player is within this distance the enemy will follow it
         float maxFollowDistance = 10f;
         
-        float raycastLength = 5;
+        //casting a raycast with the length  of 7
+        float raycastLength = 7;
         Ray ray = new Ray(transform.position, initVelocity);
         RaycastHit hit;
 
+        //checks if the raycast hits something within the specified length and stores it in the hit 
         if (Physics.Raycast(ray,out hit,raycastLength))
         {
+            //chechk if the hit is the player
             if (hit.collider.CompareTag("Player"))
             {
+                //chechk if the size of the player is smaller than the enemy
                 if (playerScript.playerSize <= sizeAndPointAmount)
                 {
+                    //gets the distance between the enemy and the player
                     float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
+                    //checks the distance to the player is within the maximum distance 
                     if (distanceToPlayer <= maxFollowDistance)
                     {
                         //the direction towards the player

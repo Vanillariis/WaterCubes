@@ -23,7 +23,6 @@ public class PlayerScript : MonoBehaviour
     //Player variables
     public int playerSize;
     private Vector3 currentScale;
-    //private List<int> levelUP = new List<int>{5, 10, 15, 20, 25}; 
     private Queue<int> levelUP = new Queue<int>();
 
     //UI variables
@@ -72,6 +71,7 @@ public class PlayerScript : MonoBehaviour
         //ensures that the player always move in the direction we look
         moveDirection = gameObject.transform.forward * verticalInput + gameObject.transform.right * horizontalInput;
         
+        //add force to the player so it  moves
         //"narmalized" ensures that the player moves at a consistent speed in all directions
         //by making sure the total length of the movement vector is always 1.
         playerRB.AddForce(moveDirection.normalized * swimSpeed);
@@ -102,6 +102,7 @@ public class PlayerScript : MonoBehaviour
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivityX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivityY;
         
+        //set rotation (this is how unity handles rotations)
         yRotation += mouseX;
         xRotation -= mouseY;
         
@@ -112,12 +113,14 @@ public class PlayerScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
     
-
+    //called from the enemy scripts when the player collides with an enemy smaller or equal in size
     public void EatCube(int enemyPoint)
     {
+        //updating the score and UI text for score
         score += enemyPoint;
         point.text = "Point:" + score;
 
+        //check if  the player has won and of not check if the player  as reached the score amount that takes them to the next level.
         if (score >= 25)
         {
             SceneManager.LoadScene("YouWonScene");
@@ -131,10 +134,13 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    //called when the player goes to the next level
     private void Grow()
     {
+        //updating the playerSize and UI text for level
         playerSize++;
         level.text = "Level:" + playerSize;
+        //make the player grow/scale up
         transform.localScale =
             Vector3.Lerp(transform.localScale, transform.localScale + new Vector3(0.25f, 0.25f, 0.25f), 6f);
     }
