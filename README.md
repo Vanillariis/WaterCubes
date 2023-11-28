@@ -10,7 +10,7 @@ The main parts of the game:
 
 - Player: cube with maincamera attached. Moves vertically using the keyboard WASD or arrow keys and horizantally by holding in the space button The player can look around using inputs from the mouse. It grows when it has eaten a certain amount of cubes. Can grow a maximum of 5 times corresponding to each of the 5 levels. 
 -	Enemies: cubes in 5 different sizes. Can either eat the player if it is bigger than the player or get eaten by the player if it is smaller.
--	Enemi-spawner: empty gameobject used to randomly spawn one of the 5 enemies at a random spot within a certain range. Every time an enemy is spawned the smallest of the enemies is spawn with it to ensure the player always has an enemy to eat no matter the level.
+-	Enemi-spawner: empty gameobject used to randomly spawn one of the 5 enemies at a random spot within a certain range. Every second time an enemy is spawned the smallest of the enemies is spawned with it to ensure the player always has an enemy to eat no matter the level.
 -	Arena: closed-off space representing the sea, where the player can move freely. The bottom and rocks are made using ProBuilder and the walls are cubes with a video applied to them. 
 -	Canvas Pointsystem: a UI that represents the players current level and amount of points. Every time the player levels up the points are reset to zero. 
 -	Scenes: There are a total of 3 scenes which are GameScene, YouLooseScene, and YouWinScene. When the player dies it switches to the YouLooseScene and when the player wins it switches to the YouWinScene. The YouWinScene and YouLooseScene both contain two buttons, one to play again and one to quit the game.
