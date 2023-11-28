@@ -17,7 +17,7 @@ The main parts of the game:
 
 Game Features:
 - The enemies are spawned randomly enhancing replayability. 
--	The difficulty of the game changes with time. 
+-	The difficulty of the game changes with time, if the player is not fast enough.
 -	The game keeps track of level and score
 -	The game has a Win and Lose screen where the user is able to choose between either playing again or quit the game.  
 
